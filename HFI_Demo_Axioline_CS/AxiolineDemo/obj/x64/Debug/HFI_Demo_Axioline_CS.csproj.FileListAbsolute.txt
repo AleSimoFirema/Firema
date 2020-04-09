@@ -1,0 +1,16 @@
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\bin\x64\Debug\HFI_Demo_Axioline_CS.exe.config
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\bin\x64\Debug\HFI_Demo_Axioline_CS.exe
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\bin\x64\Debug\HFI_Demo_Axioline_CS.pdb
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\bin\x64\Debug\AxlWinFormComponents.dll
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\bin\x64\Debug\Common_FX46.dll
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\bin\x64\Debug\PhoenixContactHFIAxioline.dll
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\bin\x64\Debug\PxC_Util.dll
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\bin\x64\Debug\PhoenixContact.Modbus.dll
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\obj\x64\Debug\HFI_Demo_Axioline_CS.csprojAssemblyReference.cache
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\obj\x64\Debug\HFI_Demo_Axioline_CS.MainForm.resources
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\obj\x64\Debug\HFI_Demo_Axioline_CS.Properties.Resources.resources
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\obj\x64\Debug\HFI_Demo_Axioline_CS.csproj.GenerateResource.cache
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\obj\x64\Debug\HFI_Demo_Axioline_CS.csproj.CoreCompileInputs.cache
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\obj\x64\Debug\HFI_Demo_Axioline_CS.csproj.CopyComplete
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\obj\x64\Debug\HFI_Demo_Axioline_CS.exe
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Axioline_CS\AxiolineDemo\obj\x64\Debug\HFI_Demo_Axioline_CS.pdb

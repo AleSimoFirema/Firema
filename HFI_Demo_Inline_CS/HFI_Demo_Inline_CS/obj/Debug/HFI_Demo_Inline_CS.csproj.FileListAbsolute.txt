@@ -1,0 +1,15 @@
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\bin\Debug\HFI_Demo_Inline_CS.exe.config
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\bin\Debug\HFI_Demo_Inline_CS.exe
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\bin\Debug\HFI_Demo_Inline_CS.pdb
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\bin\Debug\HFI_Library_FX46.dll
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\bin\Debug\PxC_Util.dll
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\bin\Debug\IBSG4_Driver_FX46.dll
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\bin\Debug\Common_FX46.dll
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\obj\Debug\HFI_Demo_Inline_CS.csprojAssemblyReference.cache
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\obj\Debug\HFI_Demo_Inline_CS.frmMain.resources
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\obj\Debug\HFI_Demo_Inline_CS.Properties.Resources.resources
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\obj\Debug\HFI_Demo_Inline_CS.csproj.GenerateResource.cache
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\obj\Debug\HFI_Demo_Inline_CS.csproj.CoreCompileInputs.cache
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\obj\Debug\HFI_Demo_Inline_CS.csproj.CopyComplete
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\obj\Debug\HFI_Demo_Inline_CS.exe
+C:\Users\Alten\Documents\HFI 3.2\HFI_Demo_Inline_CS\HFI_Demo_Inline_CS\obj\Debug\HFI_Demo_Inline_CS.pdb
