@@ -137,5 +137,16 @@ namespace provaFirema
             {
             }
         }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            SetWindow sw = new SetWindow();
+            sw.Show();
+            double v = sw.getval();
+            int riga = dataGrid1.SelectedIndex;
+            Persona p = persone[riga];
+            p.valore = v;
+            persone[riga] = p;
+            dataGrid1.Items.Refresh();
+        }
     }
 }
