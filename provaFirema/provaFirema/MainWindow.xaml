@@ -23,14 +23,13 @@
                 <DataGridTextColumn Header="Nome" Width="120" Binding="{Binding Path=nome}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Cognome" Width="120" Binding="{Binding Path=cognome}" IsReadOnly="True"/>
                 <DataGridTextColumn Header="Valore" Width="120" Binding="{Binding Path=valore}" IsReadOnly="True"/>
-                <DataGridTemplateColumn Header="Set" Width="120" IsReadOnly="False">
+                <DataGridTemplateColumn Header="Set Value" Width="120" IsReadOnly="False">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="Set Value" Click="Button_Click_1"/>
+                            <Button Content="Set a new value" Click="Button_Click_1"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid x:Name="dataGrid2" HorizontalAlignment="Left" Height="87" Margin="30,371.2,0,-97.4" AutoGenerateColumns="False" Grid.Row="1" VerticalAlignment="Top" Width="420" SelectionChanged="dataGrid2_SelectionChanged">
@@ -43,7 +42,11 @@
         </DataGrid>
         <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="23" Margin="155,327.2,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="searchBox_TextChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="28,334.2,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Search by Name" VerticalAlignment="Top"/>
-        <TextBlock x:Name="selectedTxt" HorizontalAlignment="Left" Margin="622,40,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Height="20" Width="332"/>
+        <TextBlock x:Name="selectedTxt" HorizontalAlignment="Left" Margin="638,242,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Height="68" Width="316"/>
         <TextBlock x:Name="selected2Txt" HorizontalAlignment="Left" Margin="638,44,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Height="17" Width="316"/>
+        <TextBox x:Name="newValtxt" HorizontalAlignment="Left" Height="23" Margin="664,95,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False"/>
+        <Label Content="Insert the new value:" HorizontalAlignment="Left" Margin="666,64,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button x:Name="okbtn" Content="OK" HorizontalAlignment="Left" Margin="811,95,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click_2" IsEnabled="False"/>
+        <Button x:Name="cncbtn" Content="Cancel" HorizontalAlignment="Left" Margin="811,138,0,0" Grid.Row="1" VerticalAlignment="Top" Width="75" Click="Button_Click_3" IsEnabled="False"/>
     </Grid>
 </Window>

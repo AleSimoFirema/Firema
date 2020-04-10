@@ -139,14 +139,31 @@ namespace provaFirema
         }
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            SetWindow sw = new SetWindow();
-            sw.Show();
-            double v = sw.getval();
+            okbtn.IsEnabled = true;
+            newValtxt.IsEnabled = true;
+            cncbtn.IsEnabled = true;
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            string val = newValtxt.Text;
+            double v = Convert.ToDouble(val);
             int riga = dataGrid1.SelectedIndex;
             Persona p = persone[riga];
             p.valore = v;
             persone[riga] = p;
             dataGrid1.Items.Refresh();
+            okbtn.IsEnabled = false;
+            newValtxt.IsEnabled = false;
+            cncbtn.IsEnabled = false;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            okbtn.IsEnabled = false;
+            newValtxt.Clear();
+            newValtxt.IsEnabled = false;
+            cncbtn.IsEnabled = false;
         }
     }
 }
