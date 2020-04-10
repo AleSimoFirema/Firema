@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-D:\SVN\TOOLS\Sviluppo\Firema\Firema\provaFirema\provaFirema\obj\Debug\
+C:\Users\scava\source\repos\provaFirema\Firema\provaFirema\provaFirema\obj\Debug\
 provaFirema
 none
 false
 DEBUG;TRACE
-D:\SVN\TOOLS\Sviluppo\Firema\Firema\provaFirema\provaFirema\App.xaml
+C:\Users\scava\source\repos\provaFirema\Firema\provaFirema\provaFirema\App.xaml
 11408814807
 
-17-764835425
-126-1339082893
+161890180897
+21939104961
 bottoni\KeyButton.xaml;bottoni\Knob.xaml;bottoni\leva.xaml;bottoni\PowerButton.xaml;bottoni\TestButton.xaml;bottoni\RedButton.xaml;bottoni\StartButton.xaml;bottoni\StopButton.xaml;Gauge.xaml;MainWindow.xaml;bottoni\Toggle.xaml;
 
 False
