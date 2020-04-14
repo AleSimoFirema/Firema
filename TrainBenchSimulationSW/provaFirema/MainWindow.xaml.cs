@@ -27,6 +27,7 @@ namespace TrainBenchSimulationSW
     public partial class MainWindow : System.Windows.Window
     {
         ObservableCollection<Persona> persone = new ObservableCollection<Persona>();
+        ObservableCollection<DatiSc> script = new ObservableCollection<DatiSc>();
         public MainWindow()
         {
             InitializeComponent();
@@ -165,6 +166,49 @@ namespace TrainBenchSimulationSW
             newValtxt.Clear();
             newValtxt.IsEnabled = false;
             cncbtn.IsEnabled = false;            
+        }
+
+        private void OpenSc_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Office.Interop.Excel.Application xlApp;
+            Microsoft.Office.Interop.Excel.Workbook xlBook;
+            Microsoft.Office.Interop.Excel.Worksheet xlSheet;
+            Microsoft.Office.Interop.Excel.Range xlRange;
+
+            int xlRow;
+            string strFileName;
+
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "Excel Office| *.xls; *.xlsx; *.csv" ;
+            openFileDialog1.ShowDialog();
+            strFileName = openFileDialog1.FileName;
+
+            if (strFileName != string.Empty)
+            {
+                xlApp = new Microsoft.Office.Interop.Excel.Application();
+                xlBook = xlApp.Workbooks.Open(strFileName);
+                xlSheet = xlBook.Worksheets["Sequence"];
+                xlRange = xlSheet.UsedRange;
+                int i = 0;
+
+                for (xlRow = 2; xlRow < xlRange.Count; xlRow++)
+                {
+                    if (xlRange.Cells[xlRow, 1].Text != "")
+                    {
+                        i++;
+                        script.Add(new DatiSc { operation = xlRange.Cells[xlRow, 1].Text, name = xlRange.Cells[xlRow, 2].Text, value = Convert.ToDouble(xlRange.Cells[xlRow, 3].Text) });
+                    }
+                }
+                dataGrid1.ItemsSource = script;
+                xlBook.Close();
+                xlApp.Quit();
+            }
+        }
+        class DatiSc
+        {
+            public string operation { get; set; }
+            public string name { get; set; }
+            public double value { get; set; }
         }
     }
 }
