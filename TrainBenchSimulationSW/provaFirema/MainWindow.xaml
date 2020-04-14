@@ -65,7 +65,8 @@
             <TabItem Header="Scripting">
                 <Grid Background="#FFE5E5E5">
                     <Button Content="Open" Height="30" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click" Margin="79,0,0,360"/>
-                    <DataGrid HorizontalAlignment="Left" Height="224" Margin="79,121,0,0" VerticalAlignment="Top" Width="380"/>
+                    <DataGrid HorizontalAlignment="Left" Height="224" Margin="79,92,0,0" VerticalAlignment="Top" Width="380"/>
+                    <Button Content="Start" HorizontalAlignment="Left" Margin="341,40,0,0" VerticalAlignment="Top" Width="118" Height="31"/>
                 </Grid>
             </TabItem>
         </TabControl>
