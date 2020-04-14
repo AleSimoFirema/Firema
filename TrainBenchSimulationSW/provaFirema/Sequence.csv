@@ -1,9 +1,0 @@
-#Name:nome
-#Start
-Read, Var1, 1
-Write, Var1, 0
-Read, Var1, 1
-Read, Var1, 1
-Write, Var1, 0
-Write, Var1, 0
-#End

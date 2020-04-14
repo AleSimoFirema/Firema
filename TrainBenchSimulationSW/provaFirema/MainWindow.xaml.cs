@@ -28,6 +28,7 @@ namespace TrainBenchSimulationSW
     {
         ObservableCollection<Persona> persone = new ObservableCollection<Persona>();
         ObservableCollection<DatiSc> script = new ObservableCollection<DatiSc>();
+        ObservableCollection<String> results = new ObservableCollection<String>();
         public MainWindow()
         {
             InitializeComponent();
@@ -142,7 +143,7 @@ namespace TrainBenchSimulationSW
         {
             okbtn.IsEnabled = true;
             newValtxt.IsEnabled = true;
-            cncbtn.IsEnabled = true;
+            cancBtn.IsEnabled = true;
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -157,19 +158,11 @@ namespace TrainBenchSimulationSW
             okbtn.IsEnabled = false;
             newValtxt.Clear();
             newValtxt.IsEnabled = false;
-            cncbtn.IsEnabled = false;
-        }
-
-        private void Button_Click_3(object sender, RoutedEventArgs e)
-        {
-            okbtn.IsEnabled = false;
-            newValtxt.Clear();
-            newValtxt.IsEnabled = false;
-            cncbtn.IsEnabled = false;            
+            cancBtn.IsEnabled = false;
         }
 
         private void OpenSc_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             Microsoft.Office.Interop.Excel.Application xlApp;
             Microsoft.Office.Interop.Excel.Workbook xlBook;
             Microsoft.Office.Interop.Excel.Worksheet xlSheet;
@@ -179,29 +172,31 @@ namespace TrainBenchSimulationSW
             string strFileName;
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "Excel Office| *.xls; *.xlsx; *.csv" ;
+            openFileDialog1.Filter = "Excel Office| *.xls; *.xlsx;" ;
             openFileDialog1.ShowDialog();
             strFileName = openFileDialog1.FileName;
 
-            if (strFileName != string.Empty)
-            {
-                xlApp = new Microsoft.Office.Interop.Excel.Application();
-                xlBook = xlApp.Workbooks.Open(strFileName);
-                xlSheet = xlBook.Worksheets["Sequence"];
-                xlRange = xlSheet.UsedRange;
-                int i = 0;
-
-                for (xlRow = 2; xlRow < xlRange.Count; xlRow++)
+                if (strFileName != string.Empty)
                 {
-                    if (xlRange.Cells[xlRow, 1].Text != "")
+                    xlApp = new Microsoft.Office.Interop.Excel.Application();
+                    xlBook = xlApp.Workbooks.Open(strFileName);
+                    xlSheet = xlBook.Worksheets["Sequence"];
+                    xlRange = xlSheet.UsedRange;
+                    int i = 0;
+
+                    for (xlRow = 2; xlRow < xlRange.Count; xlRow++)
                     {
-                        i++;
-                        script.Add(new DatiSc { operation = xlRange.Cells[xlRow, 1].Text, name = xlRange.Cells[xlRow, 2].Text, value = Convert.ToDouble(xlRange.Cells[xlRow, 3].Text) });
+                        if (xlRange.Cells[xlRow, 1].Text != "")
+                        {
+                            i++;
+                            script.Add(new DatiSc { operation = xlRange.Cells[xlRow, 1].Text, name = xlRange.Cells[xlRow, 2].Text, value = Convert.ToDouble(xlRange.Cells[xlRow, 3].Text) });
+                        }
                     }
-                }
-                dataGrid1.ItemsSource = script;
-                xlBook.Close();
-                xlApp.Quit();
+                    dataGridSc.ItemsSource = script;
+                    resGrid.IsEnabled = true;
+                    startBtn.IsEnabled = true;
+                    xlBook.Close();
+                    xlApp.Quit();
             }
         }
         class DatiSc
@@ -209,6 +204,43 @@ namespace TrainBenchSimulationSW
             public string operation { get; set; }
             public string name { get; set; }
             public double value { get; set; }
+        }
+
+        private void cancBtn_Click(object sender, RoutedEventArgs e)
+        {
+            newValtxt.Clear();
+            newValtxt.IsEnabled = false;
+            okbtn.IsEnabled = false;
+            cancBtn.IsEnabled = false;
+        }
+
+        private void startBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGrid1.Items.Count == 0)
+            {
+                MessageBox.Show("Please, Load the Data File in the Main Window first!");
+            }
+            else
+            {
+                for (int i = 0; i < script.Count; i++)
+                {
+                    DatiSc d = script[i];
+                    if (d.operation == "Write")
+                    {
+                        string nomeScript = script[i].name;
+                        for (int j = 0; j < persone.Count; j++)
+                        {
+                            if (persone[j].nome == nomeScript)
+                                persone[j].valore = script[i].value;
+                        }
+                        results.Add("PASSED");
+                    }
+                    else results.Add("-");
+                }
+                dataGrid1.Items.Refresh();
+                resGrid.ItemsSource = results;
+                startBtn.IsEnabled = false;
+            }
         }
     }
 }
