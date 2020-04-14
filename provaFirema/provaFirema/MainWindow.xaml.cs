@@ -154,6 +154,7 @@ namespace provaFirema
             persone[riga] = p;
             dataGrid1.Items.Refresh();
             okbtn.IsEnabled = false;
+            newValtxt.Clear();
             newValtxt.IsEnabled = false;
             cncbtn.IsEnabled = false;
         }
