@@ -54,6 +54,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxlWinFormComponents">
+      <HintPath>..\..\Libraries\AxlWinFormComponents.dll</HintPath>
+    </Reference>
+    <Reference Include="Common_FX46">
+      <HintPath>..\..\Libraries\Common_FX46.dll</HintPath>
+    </Reference>
+    <Reference Include="HFI_Library_FX46">
+      <HintPath>..\..\Libraries\HFI_Library_FX46.dll</HintPath>
+    </Reference>
+    <Reference Include="HFI_Visu_FX46">
+      <HintPath>..\..\Libraries\HFI_Visu_FX46.dll</HintPath>
+    </Reference>
+    <Reference Include="IBSG4_Driver_FX46">
+      <HintPath>..\..\Libraries\IBSG4_Driver_FX46.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Expression.Drawing">
       <HintPath>Microsoft\Microsoft.Expression.Drawing.dll</HintPath>
     </Reference>
@@ -63,6 +78,15 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PhoenixContact.Modbus">
+      <HintPath>..\..\Libraries\PhoenixContact.Modbus.dll</HintPath>
+    </Reference>
+    <Reference Include="PhoenixContactHFIAxioline">
+      <HintPath>..\..\Libraries\PhoenixContactHFIAxioline.dll</HintPath>
+    </Reference>
+    <Reference Include="PxC_Util">
+      <HintPath>..\..\Libraries\PxC_Util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -96,6 +120,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="App%28ETH BK DI8 DO4%29.cs" />
+    <Compile Include="AxlBkApplication.cs" />
     <Compile Include="bottoni\KeyButton.xaml.cs">
       <DependentUpon>KeyButton.xaml</DependentUpon>
     </Compile>
