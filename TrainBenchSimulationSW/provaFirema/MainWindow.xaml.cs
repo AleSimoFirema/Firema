@@ -26,9 +26,11 @@ namespace TrainBenchSimulationSW
     /// </summary>
     public partial class MainWindow : System.Windows.Window
     {
-        ObservableCollection<Persona> persone = new ObservableCollection<Persona>();
+        ObservableCollection<Dati> dati = new ObservableCollection<Dati>();
+        ObservableCollection<Dati> datiBackUp = new ObservableCollection<Dati>();
         ObservableCollection<DatiSc> script = new ObservableCollection<DatiSc>();
         ObservableCollection<String> results = new ObservableCollection<String>();
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -68,30 +70,34 @@ namespace TrainBenchSimulationSW
                     if (xlRange.Cells[xlRow, 1].Text != "")
                     {
                         i++;
-                        persone.Add(new Persona { n = i, nome = xlRange.Cells[xlRow, 1].Text, cognome = xlRange.Cells[xlRow, 2].Text, valore=Convert.ToDouble(xlRange.Cells[xlRow,3].Text) });
+                        dati.Add(new Dati { n = i, name = xlRange.Cells[xlRow, 1].Text, type = xlRange.Cells[xlRow, 2].Text, value=Convert.ToDouble(xlRange.Cells[xlRow,3].Text) });
+                        datiBackUp.Add(new Dati { n = i, name = xlRange.Cells[xlRow, 1].Text, type = xlRange.Cells[xlRow, 2].Text, value = Convert.ToDouble(xlRange.Cells[xlRow, 3].Text) });
                     }
                 }
-                dataGrid1.ItemsSource = persone;
+                dataGrid1.ItemsSource = dati;
                 xlBook.Close();
                 xlApp.Quit();
+
+                filterTypeLbl.IsEnabled = true;
+                combo.IsEnabled = true;
             }
         }
-        class Persona
+        class Dati
         {
             public int n { get; set; }
-            public string nome { get; set; }
-            public string cognome { get; set; }
-            public double valore { get; set; }
+            public string name { get; set; }
+            public string type { get; set; }
+            public double value { get; set; }
         }
 
         private void searchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             //show the results of the search with the apllied filter
-            var _itemSourceList = new CollectionViewSource() { Source = persone };
+            var _itemSourceList = new CollectionViewSource() { Source = dati };
             ICollectionView Itemlist = _itemSourceList.View;
             // Filter
             string search = searchBox.Text;
-            var yourCostumFilter = new Predicate<object>(item => ((Persona)item).nome.Contains(search));
+            var yourCostumFilter = new Predicate<object>(item => ((Dati)item).name.Contains(search));
             Itemlist.Filter = yourCostumFilter;
             dataGrid2.ItemsSource = Itemlist;
         }
@@ -102,13 +108,13 @@ namespace TrainBenchSimulationSW
             {
                 if (dataGrid1.SelectedItem != null)
                 {
-                    if (dataGrid1.SelectedItem is Persona)
+                    if (dataGrid1.SelectedItem is Dati)
                     {
-                        var row = (Persona)dataGrid1.SelectedItem;
+                        var row = (Dati)dataGrid1.SelectedItem;
 
                         if (row != null)
                         {
-                            selectedTxt.Text = "#  "+row.n+"  Name:  "+row.nome+"  Surname:  "+row.cognome+"  Value:  "+row.valore;
+                            selectedTxt.Text = "#  "+row.n+"  Name:  "+row.name+"  Type:  "+row.type+"  Value:  "+row.value;
                         }
                     }
                 }
@@ -124,13 +130,13 @@ namespace TrainBenchSimulationSW
             {
                 if (dataGrid2.SelectedItem != null)
                 {
-                    if (dataGrid2.SelectedItem is Persona)
+                    if (dataGrid2.SelectedItem is Dati)
                     {
-                        var row = (Persona)dataGrid2.SelectedItem;
+                        var row = (Dati)dataGrid2.SelectedItem;
 
                         if (row != null)
                         {
-                            selected2Txt.Text = "#  " + row.n + "  Name:  " + row.nome + "  Surname:  " + row.cognome+ "  Value:  " + row.valore;
+                            selected2Txt.Text = "#  " + row.n + "  Name:  " + row.name + "  Type:  " + row.type+ "  Value:  " + row.value;
                         }
                     }
                 }
@@ -151,9 +157,9 @@ namespace TrainBenchSimulationSW
             string val = newValtxt.Text;
             double v = Convert.ToDouble(val);
             int riga = dataGrid1.SelectedIndex;
-            Persona p = persone[riga];
-            p.valore = v;
-            persone[riga] = p;
+            Dati p = dati[riga];
+            p.value = v;
+            dati[riga] = p;
             dataGrid1.Items.Refresh();
             okbtn.IsEnabled = false;
             newValtxt.Clear();
@@ -228,10 +234,10 @@ namespace TrainBenchSimulationSW
                     if (d.operation == "Write")
                     {
                         string nomeScript = script[i].name;
-                        for (int j = 0; j < persone.Count; j++)
+                        for (int j = 0; j < dati.Count; j++)
                         {
-                            if (persone[j].nome == nomeScript)
-                                persone[j].valore = script[i].value;
+                            if (dati[j].name == nomeScript)
+                                dati[j].value = script[i].value;
                         }
                         results.Add("PASSED");
                     }
@@ -240,6 +246,56 @@ namespace TrainBenchSimulationSW
                 dataGrid1.Items.Refresh();
                 resGrid.ItemsSource = results;
                 startBtn.IsEnabled = false;
+            }
+        }
+
+        private void combo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ObservableCollection<Dati> datiD = new ObservableCollection<Dati>();
+            ObservableCollection<Dati> datiA = new ObservableCollection<Dati>();
+            //Digital selection
+            if (combo.SelectedIndex == 0)
+            {
+                dati.Clear();
+                for(int i=0;i<datiBackUp.Count;i++)
+                dati.Add(datiBackUp[i]);
+
+                for(int i = 0; i< dati.Count; i++)
+                {
+                    Dati d = dati[i];
+                    if (d.type=="DO"||d.type=="DI")
+                        datiD.Add(d);
+                }
+                dati.Clear();
+                for (int i = 0; i < datiD.Count; i++)
+                    dati.Add(datiD[i]);
+                dataGrid1.Items.Refresh();
+            }
+            //Analog Selection
+            if (combo.SelectedIndex == 1)
+            {
+                dati.Clear();
+                for (int i = 0; i < datiBackUp.Count; i++)
+                    dati.Add(datiBackUp[i]);
+
+                for (int i = 0; i < dati.Count; i++)
+                {
+                    Dati d = dati[i];
+                    if (d.type == "AO" || d.type == "AI")
+                        datiA.Add(d);
+                }
+                dati.Clear();
+                for (int i = 0; i < datiA.Count; i++)
+                    dati.Add(datiA[i]);
+                dataGrid1.Items.Refresh();
+            }
+            //All selection
+            if (combo.SelectedIndex == 2)
+            {
+                dati.Clear();
+                for (int i = 0; i < datiBackUp.Count; i++)
+                    dati.Add(datiBackUp[i]);
+                dataGrid1.Items.Refresh();
             }
         }
     }
