@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace TrainBenchSimulationSW
     {
         ObservableCollection<Dati> dati = new ObservableCollection<Dati>();
         ObservableCollection<Dati> datiBackUp = new ObservableCollection<Dati>();
-        ObservableCollection<DatiSc> script = new ObservableCollection<DatiSc>();
+        ObservableCollection<scriptRow.Dati> scriptData = new ObservableCollection<scriptRow.Dati>();
         ObservableCollection<String> results = new ObservableCollection<String>();
         
         public MainWindow()
@@ -174,7 +175,6 @@ namespace TrainBenchSimulationSW
             Microsoft.Office.Interop.Excel.Worksheet xlSheet;
             Microsoft.Office.Interop.Excel.Range xlRange;
 
-            int xlRow;
             string strFileName;
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -188,29 +188,20 @@ namespace TrainBenchSimulationSW
                     xlBook = xlApp.Workbooks.Open(strFileName);
                     xlSheet = xlBook.Worksheets["Sequence"];
                     xlRange = xlSheet.UsedRange;
-                    int i = 0;
-
-                    for (xlRow = 2; xlRow < xlRange.Count; xlRow++)
-                    {
-                        if (xlRange.Cells[xlRow, 1].Text != "")
-                        {
-                            i++;
-                            script.Add(new DatiSc { operation = xlRange.Cells[xlRow, 1].Text, name = xlRange.Cells[xlRow, 2].Text, value = Convert.ToDouble(xlRange.Cells[xlRow, 3].Text) });
-                        }
-                    }
-                    dataGridSc.ItemsSource = script;
+                    ScriptingManager.openScript(xlRange, scriptData);
+                    dataGridSc.ItemsSource = scriptData;
                     resGrid.IsEnabled = true;
                     startBtn.IsEnabled = true;
                     xlBook.Close();
                     xlApp.Quit();
             }
-        }
+        }/*
         class DatiSc
         {
             public string operation { get; set; }
             public string name { get; set; }
             public double value { get; set; }
-        }
+        }*/
 
         private void cancBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -228,19 +219,34 @@ namespace TrainBenchSimulationSW
             }
             else
             {
-                for (int i = 0; i < script.Count; i++)
+                var _itemSourceList = new CollectionViewSource() { Source = dati };
+                ICollectionView Itemlist = _itemSourceList.View;
+                // Filter
+                
+
+                for (int i = 0; i < scriptData.Count; i++)          //Move to Scripting Manager
                 {
-                    DatiSc d = script[i];
+                    scriptRow.Dati d = scriptData[i];
+                    var yourCostumFilter = new Predicate<object>(item => ((Dati)item).name.Contains(d.name));
+                    
+                    Itemlist.Filter = yourCostumFilter;
+                    Dati o = (Dati) Itemlist.CurrentItem;           //change variable name  
+                    
                     if (d.operation == "Write")
                     {
-                        string nomeScript = script[i].name;
-                        for (int j = 0; j < dati.Count; j++)
+                        if (o.type.ToString() != "DI" || o.type.ToString() != "AI")
                         {
-                            if (dati[j].name == nomeScript)
-                                dati[j].value = script[i].value;
+                            MessageBox.Show("Not Writable Variable:"+ d.name);
+                        } else {
+                            string nomeScript = scriptData[i].name;
+                            for (int j = 0; j < dati.Count; j++)
+                            {
+                                if (dati[j].name == nomeScript)
+                                    dati[j].value = scriptData[i].value;
+                            }
+                            results.Add("PASSED");
                         }
-                        results.Add("PASSED");
-                    }
+                    }                   //Add Reading 
                     else results.Add("-");
                 }
                 dataGrid1.Items.Refresh();
