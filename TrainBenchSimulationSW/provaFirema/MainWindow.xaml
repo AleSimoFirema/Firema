@@ -16,8 +16,7 @@
         <StackPanel Grid.Row="0">
             <Image Height="30" Width="60" Source="close.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" Margin="0,0,18,0" VerticalAlignment="Center" HorizontalAlignment="Right"/>
         </StackPanel>
-        <TextBlock x:Name="selectedTxt" HorizontalAlignment="Left" Margin="638,242,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="68" Width="316"/>
-        <TextBlock x:Name="selected2Txt" HorizontalAlignment="Left" Margin="638,44,0,0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding}" VerticalAlignment="Top" Height="17" Width="316"/>
+
         <TabControl HorizontalAlignment="Left" Height="459" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="966" Grid.RowSpan="2">
             <TabItem Header="Main" HorizontalAlignment="Left" Width="58" Margin="-2,-2,0,2">
                 <Grid Background="#FFE5E5E5" Margin="0,0,-2,0">
@@ -30,16 +29,16 @@
                         <RowDefinition Height="106*"/>
                         <RowDefinition Height="68*"/>
                     </Grid.RowDefinitions>
-                    <TextBox x:Name="newValtxt" HorizontalAlignment="Left" Height="23" Margin="433.652,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Grid.Row="1" Grid.Column="1"/>
-                    <Label Content="Insert the new value:" HorizontalAlignment="Left" Margin="435.652,179,0,0" VerticalAlignment="Top" Grid.RowSpan="2" Grid.Column="1"/>
-                    <Button x:Name="okbtn" Content="OK" HorizontalAlignment="Left" Margin="580.652,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2" IsEnabled="False" Grid.Row="1" Grid.Column="1"/>
-                    <DataGrid x:Name="dataGrid1" CanUserResizeRows="False" CanUserAddRows="False" HorizontalAlignment="Left" AutoGenerateColumns="False" Margin="22,83,0,14" SelectionChanged="dataGrid1_SelectionChanged" Width="480" Grid.RowSpan="3" Grid.ColumnSpan="2">
+                    <TextBox x:Name="newValtxt" HorizontalAlignment="Left" Height="23" Margin="434.8,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" Grid.Column="1"/>
+                    <Label Content="Insert the new value:" HorizontalAlignment="Left" Margin="434.8,119,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                    <Button x:Name="okbtn" Content="OK" HorizontalAlignment="Left" Margin="588.8,154,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2" IsEnabled="False" Grid.Column="1"/>
+                    <DataGrid x:Name="dataGrid1" CanUserResizeRows="False" CanUserAddRows="False" HorizontalAlignment="Left" AutoGenerateColumns="False" Margin="22,83,0,14" SelectionChanged="dataGrid1_SelectionChanged" Width="450" Grid.RowSpan="3" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="#" Width="60" Binding="{Binding n}" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Nome" Width="120" Binding="{Binding nome}" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Cognome" Width="120" Binding="{Binding cognome}" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Valore" Width="120" Binding="{Binding valore}" IsReadOnly="True"/>
-                            <DataGridTemplateColumn Header="Set Value" Width="120" IsReadOnly="False">
+                            <DataGridTextColumn Header="Name" Width="110" Binding="{Binding name}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Type" Width="60" Binding="{Binding type}" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Value" Width="60" Binding="{Binding value}" IsReadOnly="True"/>
+                            <DataGridTemplateColumn Header="Set Value" Width="150" IsReadOnly="False">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Content="Set a new value" Click="Button_Click_1"/>
@@ -49,17 +48,25 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <Button Content="Import Excel File" Height="30" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="Button_Click" Margin="22,0,0,139" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="23" Margin="562.652,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="searchBox_TextChanged" Grid.Row="1" Grid.Column="1"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="433.652,92,0,0" TextWrapping="Wrap" Text="Search by Name" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
-                    <DataGrid x:Name="dataGrid2" HorizontalAlignment="Left" Height="87" Margin="433.652,130,0,0" AutoGenerateColumns="False" Grid.Row="1" VerticalAlignment="Top" Width="420" SelectionChanged="dataGrid2_SelectionChanged" Grid.RowSpan="2" Grid.Column="1">
+                    <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="23" Margin="562.8,36.2,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="searchBox_TextChanged" Grid.Row="1" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="434.8,43.2,0,0" TextWrapping="Wrap" Text="Search by Name" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1"/>
+                    <DataGrid x:Name="dataGrid2" HorizontalAlignment="Left" Height="87" Margin="434.8,82.2,0,0" AutoGenerateColumns="False" Grid.Row="1" VerticalAlignment="Top" Width="312" SelectionChanged="dataGrid2_SelectionChanged" Grid.RowSpan="2" Grid.Column="1">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="#" Width="60" Binding="{Binding n}"/>
-                            <DataGridTextColumn Header="Nome" Width="120" Binding="{Binding nome}"/>
-                            <DataGridTextColumn Header="Cognome" Width="120" Binding="{Binding cognome}"/>
-                            <DataGridTextColumn Header="Valore" Width="120" Binding="{Binding valore}"/>
+                            <DataGridTextColumn Header="Name" Width="110" Binding="{Binding name}"/>
+                            <DataGridTextColumn Header="Type" Width="60" Binding="{Binding type}"/>
+                            <DataGridTextColumn Header="Value" Width="60" Binding="{Binding value}"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <Button x:Name="cancBtn" Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="678.8,0,0,111.6" Grid.Row="1" VerticalAlignment="Bottom" Width="75" IsEnabled="False" Click="cancBtn_Click"/>
+                    <Button x:Name="cancBtn" Content="Cancel" Grid.Column="1" HorizontalAlignment="Left" Margin="689.8,0,0,27.8" VerticalAlignment="Bottom" Width="75" IsEnabled="False" Click="cancBtn_Click"/>
+                    <ComboBox x:Name="combo" Grid.Column="1" HorizontalAlignment="Left" Margin="246.8,39,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="combo_SelectionChanged">
+                        <ComboBoxItem Content="Digital"/>
+                        <ComboBoxItem Content="Analog"/>
+                        <ComboBoxItem Content="All"/>
+                    </ComboBox>
+                    <Label x:Name="filterTypeLbl" Content="Filter for type: " Grid.Column="1" HorizontalAlignment="Left" Margin="141.8,34,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+                    <TextBlock x:Name="selectedTxt" Height="21" Width="313" HorizontalAlignment="Left" Margin="437.8,0.2,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Grid.Column="1"/>
+                    <TextBlock x:Name="selected2Txt" Height="21" Width="316" Grid.Column="1" HorizontalAlignment="Left" Margin="434.8,46.4,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Scripting">
