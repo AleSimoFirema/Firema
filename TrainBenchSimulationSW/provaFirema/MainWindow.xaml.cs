@@ -29,7 +29,7 @@ namespace TrainBenchSimulationSW
     {
         ObservableCollection<Dati> dati = new ObservableCollection<Dati>();
         ObservableCollection<Dati> datiBackUp = new ObservableCollection<Dati>();
-        ObservableCollection<ScriptRow.DatiSc> scriptData = new ObservableCollection<ScriptRow.DatiSc>();
+        ObservableCollection<ScriptRow.DataSc> scriptData = new ObservableCollection<ScriptRow.DataSc>();
         ObservableCollection<String> results = new ObservableCollection<String>();
         
         public MainWindow()
@@ -226,18 +226,20 @@ namespace TrainBenchSimulationSW
 
                 for (int i = 0; i < scriptData.Count; i++)          //Move to Scripting Manager
                 {
-                    ScriptRow.DatiSc d = scriptData[i];
+                    scriptRow.Dati d = scriptData[i];
                     var yourCostumFilter = new Predicate<object>(item => ((Dati)item).name.Contains(d.name));
                     
                     Itemlist.Filter = yourCostumFilter;
                     Dati o = (Dati) Itemlist.CurrentItem;           //change variable name  
-                    
+
                     if (d.operation == "Write")
                     {
                         if (o.type.ToString() != "DI" || o.type.ToString() != "AI")
                         {
-                            MessageBox.Show("Not Writable Variable:"+ d.name);
-                        } else {
+                            MessageBox.Show("Not Writable Variable:" + d.name);
+                        }
+                        else
+                        {
                             string nomeScript = scriptData[i].name;
                             for (int j = 0; j < dati.Count; j++)
                             {
@@ -247,7 +249,17 @@ namespace TrainBenchSimulationSW
                             results.Add("PASSED");
                         }
                     }                   //Add Reading 
-                    else results.Add("-");
+                    else if (d.operation == "Read")
+                    {
+                        if (o.type.ToString() != "DO" || o.type.ToString() != "AO")
+                        {
+                            MessageBox.Show("Not Readable Variable:" + d.name);
+                        }
+                        else
+                        {
+                            results.Add("-");
+                        }
+                    }
                 }
                 dataGrid1.Items.Refresh();
                 resGrid.ItemsSource = results;

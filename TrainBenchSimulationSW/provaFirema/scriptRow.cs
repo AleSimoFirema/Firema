@@ -8,7 +8,7 @@ namespace TrainBenchSimulationSW
 {
     public class ScriptRow
     {
-        public class DatiSc
+        public class DataSc
         {
             public string operation { get; set; }
             public string name { get; set; }
