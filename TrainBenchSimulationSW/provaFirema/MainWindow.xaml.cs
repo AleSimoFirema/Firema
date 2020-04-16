@@ -29,7 +29,7 @@ namespace TrainBenchSimulationSW
     {
         ObservableCollection<Dati> dati = new ObservableCollection<Dati>();
         ObservableCollection<Dati> datiBackUp = new ObservableCollection<Dati>();
-        ObservableCollection<scriptRow.Dati> scriptData = new ObservableCollection<scriptRow.Dati>();
+        ObservableCollection<ScriptRow.DatiSc> scriptData = new ObservableCollection<ScriptRow.DatiSc>();
         ObservableCollection<String> results = new ObservableCollection<String>();
         
         public MainWindow()
@@ -226,7 +226,7 @@ namespace TrainBenchSimulationSW
 
                 for (int i = 0; i < scriptData.Count; i++)          //Move to Scripting Manager
                 {
-                    scriptRow.Dati d = scriptData[i];
+                    ScriptRow.DatiSc d = scriptData[i];
                     var yourCostumFilter = new Predicate<object>(item => ((Dati)item).name.Contains(d.name));
                     
                     Itemlist.Filter = yourCostumFilter;

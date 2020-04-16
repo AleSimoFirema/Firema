@@ -14,9 +14,9 @@ namespace TrainBenchSimulationSW
         public ScriptingManager()
         {
         }
-        public static void openScript(Microsoft.Office.Interop.Excel.Range xlRange, ObservableCollection<scriptRow.Dati> scriptData)
+        public static void openScript(Microsoft.Office.Interop.Excel.Range xlRange, ObservableCollection<ScriptRow.DatiSc> scriptData)
         {
-            ObservableCollection<scriptRow.Dati> datiBackUp = new ObservableCollection<scriptRow.Dati>();
+            ObservableCollection<ScriptRow.DatiSc> datiBackUp = new ObservableCollection<ScriptRow.DatiSc>();
             int xlRow;
             int i = 0;
             for (xlRow = 2; xlRow < xlRange.Count; xlRow++)
@@ -24,7 +24,7 @@ namespace TrainBenchSimulationSW
                 if (xlRange.Cells[xlRow, 1].Text != "")
                 {
                     i++;
-                    scriptData.Add(new scriptRow.Dati { operation = xlRange.Cells[xlRow, 1].Text, name = xlRange.Cells[xlRow, 2].Text, value = Convert.ToDouble(xlRange.Cells[xlRow, 3].Text) });
+                    scriptData.Add(new ScriptRow.DatiSc { operation = xlRange.Cells[xlRow, 1].Text, name = xlRange.Cells[xlRow, 2].Text, value = Convert.ToDouble(xlRange.Cells[xlRow, 3].Text) });
                 }
             }
             //return dataScript;

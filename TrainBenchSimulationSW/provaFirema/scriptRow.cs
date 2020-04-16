@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TrainBenchSimulationSW
 {
-    public class scriptRow
+    public class ScriptRow
     {
-        public class Dati
+        public class DatiSc
         {
             public string operation { get; set; }
             public string name { get; set; }

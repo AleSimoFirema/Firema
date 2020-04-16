@@ -140,7 +140,7 @@
     <Compile Include="bottoni\Toggle.xaml.cs">
       <DependentUpon>Toggle.xaml</DependentUpon>
     </Compile>
-    <Compile Include="scriptRow.cs" />
+    <Compile Include="ScriptRow.cs" />
     <Page Include="bottoni\KeyButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
